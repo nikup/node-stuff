@@ -1,42 +1,42 @@
 var _ = require('underscore');
 
 var beerAndFries = function (items) {
-	var beers = _.sortBy(_.filter(items, function(item) { return item.type == "beer"}), "score"),
-		fries = _.sortBy(_.filter(items, function(item) { return item.type == "fries"}), "score");
+    var beers = _.sortBy(_.filter(items, function(item) { return item.type == "beer"}), "score"),
+        fries = _.sortBy(_.filter(items, function(item) { return item.type == "fries"}), "score");
 
-	return _.reduce(_.zip(beers, fries), function(totalScore, combination){ 
-		return totalScore + combination[0].score * combination[1].score; 
-		}, 0);
+    return _.reduce(_.zip(beers, fries), function(totalScore, combination){ 
+        return totalScore + combination[0].score * combination[1].score; 
+        }, 0);
 }
 
 //pure js version
 //just for fun and to see how long it will be
 //and yeah, i like reverse fors
 var beerAndFriesNoUnderscore = function (items) {
-	var beers = [],
-		fries = [];
+    var beers = [],
+        fries = [];
 
-	for (var i = items.length - 1; i >= 0; i--) {
-		if(items[i].type == "beer") {
-			beers.push(items[i].score);
-		} else {
-			fries.push(items[i].score);
-		}
-	}
+    for (var i = items.length - 1; i >= 0; i--) {
+        if(items[i].type == "beer") {
+            beers.push(items[i].score);
+        } else {
+            fries.push(items[i].score);
+        }
+    }
 
-	var sortingFunction = function (a, b) {
-		return a - b;
-	};
+    var sortingFunction = function (a, b) {
+        return a - b;
+    };
 
-	beers = beers.sort(sortingFunction);
-	fries = fries.sort(sortingFunction);
+    beers = beers.sort(sortingFunction);
+    fries = fries.sort(sortingFunction);
 
-	var	totalScore = 0;
-	for (var i = beers.length - 1; i >= 0; i--) {
-		totalScore += beers[i] * fries[i];
-	}
+    var totalScore = 0;
+    for (var i = beers.length - 1; i >= 0; i--) {
+        totalScore += beers[i] * fries[i];
+    }
 
-	return totalScore;
+    return totalScore;
 }
 
 exports.beerAndFries = beerAndFries;
