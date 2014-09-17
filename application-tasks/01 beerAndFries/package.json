@@ -1,5 +1,5 @@
 {
-  "name": "Beer and Fries",
+  "name": "beerAndFries",
   "dependencies": {
     "underscore": ">= 1.6.0",
     "nodeunit": "~0.7.4"
