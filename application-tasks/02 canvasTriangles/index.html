@@ -9,6 +9,15 @@
         left: 0px;
         top: 0px;
     }
+
+    div#rightSideMenu {
+        position: relative;
+    }
+
+    #triangleFillColor {
+        width: 100px;
+        height: 50px;
+    }
     </style>
 
     <title>wow much triangles</title>
@@ -17,6 +26,14 @@
     <canvas id="trianglesCanvas" style="background-color: #E3DCCF"></canvas>
     <canvas id="tempMovementCanvas"></canvas>
 
+    <div id="rightSideMenu">
+        <h4>Pick a color:</h4>
+        <input id="triangleFillColor" type="color" value="#000000"><br/><br/>
+        <input id="clearCanvas" type="button" value="Clear Canvas"><br/>
+        <input id="save" type="button" value="Save to local storage"><br/>
+        <select id="loadOptions" </select>
+        <input id="load" type="button" value="Load!">
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
