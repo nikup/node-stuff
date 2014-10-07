@@ -179,11 +179,9 @@ function triangleCenter (points) {
 
 function writeArea (triangleColor, trianglePoints) {
 
-    console.log(triangleColor);
     var textColor = invertHex(triangleColor),
         textPosition = triangleCenter(trianglePoints),
         text = triangleArea(trianglePoints);
-
 
     context.textAlign = "center";
     context.textBaseline = "middle"; 
@@ -223,5 +221,5 @@ function invertHex(hexnum){
         }
     }
         
-    return resultnum;
+    return "#" + resultnum;
 }
