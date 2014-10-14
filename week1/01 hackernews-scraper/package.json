@@ -1,0 +1,13 @@
+{
+    "name": "hackernews-scraper",
+    "version": "1.0.0",
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+    	"underscore": ">= 1.6.0",
+        "body-parser": "^1.9.0",
+        "express": "^4.9.7",
+        "generate-key": "0.0.6",
+        "request": "2.45.0"
+    }
+}

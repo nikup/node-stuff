@@ -1,10 +1,10 @@
 var os = require('os'),
-	_ = require('underscore'),
-	fs = require('fs'),
-	http = require('http'),
-	https = require('https'),
-	iniPath = process.argv[2],
-	iniFile, fileName = getFileName(iniPath),
+    _ = require('underscore'),
+    fs = require('fs'),
+    http = require('http'),
+    https = require('https'),
+    iniPath = process.argv[2],
+    iniFile, fileName = getFileName(iniPath),
 
     onResponse = function(response) {
         response.on('data', function(resData) {
@@ -14,9 +14,9 @@ var os = require('os'),
 
 if (isUrl(iniPath)) {
     if (isHttps(iniPath)) {
-    	https.get(iniPath, onResponse);
+        https.get(iniPath, onResponse);
     } else if (isHttp(iniPath)) {
-    	http.get(iniPath, onResponse);
+        http.get(iniPath, onResponse);
     }
 } else {
     iniFile = fs.readFileSync(iniPath, 'utf8');
@@ -24,22 +24,22 @@ if (isUrl(iniPath)) {
 }
 
 function iniToJson(iniFile) {
-	var	iniLines = _.filter(iniFile.split(os.EOL), function(line) {
-			return line.replace(/^\s*[\r\n]/gm, "").length && line[0] != ";";
-		}),
-		result = {}, lastSection, keyValuePair;
+    var iniLines = _.filter(iniFile.split(os.EOL), function(line) {
+        return line.replace(/^\s*[\r\n]/gm, "").length && line[0] != ";";
+    }),
+    result = {}, lastSection, keyValuePair;
 
-	_.each(iniLines, function(line) {
-		if (line[0] == "[") {
-			lastSection = line.slice(1, line.length - 1).trim();
-			result[lastSection] = {};
-		} else {
-			keyValuePair = line.split("=");
-			result[lastSection][keyValuePair[0].trim()] = keyValuePair[1].trim();
-		}
-	});
+    _.each(iniLines, function(line) {
+        if (line[0] == "[") {
+            lastSection = line.slice(1, line.length - 1).trim();
+            result[lastSection] = {};
+        } else {
+            keyValuePair = line.split("=");
+            result[lastSection][keyValuePair[0].trim()] = keyValuePair[1].trim();
+        }
+    });
 
-	fs.writeFileSync(fileName, JSON.stringify(result, null, 2));
+    fs.writeFileSync(fileName, JSON.stringify(result, null, 2));
 }
 
 function getFileName(path) {
@@ -61,9 +61,9 @@ function isUrl(str) {
 }
 
 function isHttp(str) {
-	return str.indexOf("http") == 0;
+    return str.indexOf("http") == 0;
 }
 
 function isHttps(str) {
-	return str.indexOf("https") == 0;
+    return str.indexOf("https") == 0;
 }
