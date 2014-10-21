@@ -9,8 +9,9 @@ request('https://hacker-news.firebaseio.com/v0/maxitem.json?print=pretty', funct
         maxItem = parseInt(body, 10);
 
         fs.writeFileSync(filePath, JSON.stringify({maxItem: maxItem}, null, 2));
-
-        makeRequest(previousMaxItem + 1, maxItem);
+        if(previousMaxItem < maxItem) {
+            makeRequest(previousMaxItem + 1, maxItem);
+        }
     }
 });
 

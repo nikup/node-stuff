@@ -1,0 +1,8 @@
+{
+  "name": "json-to--mongo",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongodb": "~2.0",
+    "underscore": ">= 1.6.0"
+  }
+}
