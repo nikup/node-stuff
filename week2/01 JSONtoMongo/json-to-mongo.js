@@ -23,7 +23,7 @@ findDocuments = function(db, callback) {
   console.log(collection.find({name: "Nikki"}));
   collection.find({}).toArray(function(err, docs) {
     console.dir(docs);
-    callback(docs);
+    callback(docts);
   });      
 };
 
