@@ -20,10 +20,9 @@ var insertDocuments = function(db, callback) {
 findDocuments = function(db, callback) {
   var collection = db.collection(jsonFile.replace(".json", ""));
 
-  console.log(collection.find({name: "Nikki"}));
   collection.find({}).toArray(function(err, docs) {
     console.dir(docs);
-    callback(docts);
+    callback(docs);
   });      
 };
 
