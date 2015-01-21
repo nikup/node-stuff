@@ -1,0 +1,8 @@
+{
+  "name": "big-file",
+  "version": "1.0.0",
+  "dependencies": {
+    "yargs": "~1.3.x",
+    "bigint": "~0.4.x"
+  }
+}
